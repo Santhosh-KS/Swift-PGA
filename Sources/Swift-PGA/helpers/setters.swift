@@ -112,6 +112,12 @@ public func flipSign<A:Numeric,B>(_ vec:(A,B)) -> (A,B) {
   (vec.0 * -1, vec.1)
 }
 
+
+public func flipSign<A:Numeric,B>(_ g1:UInt8, _ g2:UInt8, vec:(A,B)) -> (A,B) {
+  (g1*g2)%2 == 0 ? (vec.0, vec.1) : (vec.0 * -1, vec.1)
+}
+
+
 public func pseudoScalar<A:Numeric>() -> (A,[e]) {
   (1, [e(0), e(1), e(2), e(3)])
 }

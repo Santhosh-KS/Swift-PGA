@@ -134,3 +134,13 @@ public func |+|<A:FloatingPoint> (_ lhs:[(A, [e])], _ rhs:(A, [e]))  -> [(A,[e])
 public func |+|<A:FloatingPoint> (_ lhs:(A, [e]), _ rhs:[(A, [e])])  -> [(A,[e])] {
   (lhs |> arrayfy) |+| rhs
 }
+
+
+public func |+|<A:FloatingPoint> (_ lhs:A, _ rhs:(A, [e])) -> [(A,[e])] {
+  [ lhs |> vectorize, rhs]
+}
+
+public func |+|<A:FloatingPoint> (_ lhs:(A, [e]), _ rhs:A) -> [(A,[e])] {
+  [ lhs, rhs |> vectorize]
+}
+

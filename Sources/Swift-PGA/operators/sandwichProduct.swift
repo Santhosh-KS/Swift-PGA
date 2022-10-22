@@ -18,6 +18,7 @@ public func |<*>|<A:FloatingPoint>(_ lhs:(A,e), _ rhs:(A,e)) -> (A, [e]) {
   (lhs |> arrayfySecond) |<*>| (rhs |> arrayfySecond)
 }
 
+// TODO: Use flipSign<A:Numeric,B>(_ g1:UInt8, _ g2:UInt8, vec:(A,B)) version of flipSign
 public func |<*>|<A:FloatingPoint>(_ lhs:(A,[e]), _ rhs:(A,[e])) -> (A, [e]) {
   if lhs.1 == [e(0)] || rhs.1 == [e(0)] { return zeroVector() }
   else { return (lhs |*| rhs |*| |~|lhs) |> flipSign }
@@ -84,3 +85,12 @@ public func |<*>|<A:FloatingPoint>(_ lhs:e, _ rhs: (A,[e])) -> (A, [e]) {
 }
 
 
+// TODO: add tests for this
+public func |<*>|<A:FloatingPoint>(_ lhs:[(A,[e])], _ rhs:(A,[e])) -> [(A, [e])] {
+  lhs.map { $0 |<*>| rhs }
+}
+
+// TODO: add tests for this
+public func |<*>|<A:FloatingPoint>(_ lhs:(A,[e]), _ rhs:[(A,[e])]) -> [(A, [e])] {
+  rhs.map { lhs |<*>| $0 }
+}

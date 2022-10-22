@@ -44,4 +44,3 @@ public func kineticEnergy<A:BinaryFloatingPoint>(_ mass:A, _ velocity:A) -> A {
 public func momentum<A:BinaryFloatingPoint>(_ mass:A, _ velocity:A) -> A {
   mass * velocity
 }
-

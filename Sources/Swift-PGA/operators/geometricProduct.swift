@@ -42,6 +42,15 @@ func |*|<A:FloatingPoint>(_ lhs:(A,e), _ rhs:(A,e)) -> (A, [e]) {
   (lhs |> arrayfySecond) |*| (rhs |> arrayfySecond)
 }
 
+func |*|<A:FloatingPoint>(_ lhs:A, _ rhs:[e]) -> (A, [e]) {
+  (lhs, rhs)
+}
+
+func |*|<A:FloatingPoint>(_ lhs:[e], _ rhs:A) -> (A, [e]) {
+  (rhs, lhs)
+}
+
+
 func evaluateResidual<A:FloatingPoint>(_ lhs:(A,[e]), _ rhs:(A, [e])) -> (A, [e]) {
   var retVal:(A, [e]) = (lhs.0|*|rhs.0, (lhs.1 + rhs.1)) |> normalized
   retVal.1 = (retVal.1 |> removeDuplicates)

@@ -252,3 +252,71 @@ print("line = ", line.map(stringify).joined(separator: " + "))
 //print("rev = ", rev)
 //let sp = a |<*>| a
 //print("Sandwich = ", sp)
+
+
+import Foundation
+
+func localSin(_ x:Float) -> Float {
+  sin(x)
+}
+
+func sqr<A:Numeric>(of x:A) -> A {
+  x*x
+}
+
+let g0_1 = gain(on:sin(Float.pi/2), with: 0.01)
+print(g0_1)
+
+
+let gainCalulator = curry(gain(on:with:))(sin(Float.pi/2))
+print(gainCalulator(0.01))
+
+let t = (sin(Float.pi/2), 0.1) |> gain(on:with:)
+print(t)
+
+
+let origin = e1 |^| e2 |^| e3
+print(origin)
+
+let my_p = 1.0 |+| (-0.5 |*| e0)
+print(my_p)
+
+let originSandwichP = my_p |<*>| origin
+print(originSandwichP)
+
+let q = e1 |+| e2 |+| e3
+print(q)
+
+let alternate_q = (e1 |+| (-1 |*| e0)) |^| (e2 |+| (-1 |*| e0)) |^| (e3 |+| (-1 |*| e0))
+print(alternate_q)
+
+//(e1 − q1) ∧ (e2 − q2)
+let exp1 = (e1 |+| (-1 |*| e0))
+print(exp1)
+let exp2 = (e2 |+| (-1 |*| e0))
+print(exp2)
+let exp3 = (e3 |+| (-1 |*| e0))
+print(exp3)
+
+let exp1Wedgeexp2 = exp1 |^| exp2 |^| exp3
+print(exp1Wedgeexp2)
+
+let e1w2 = (e1 |^| e2) |*| e123
+print(e1w2)
+
+let e2w3 = (e2 |^| e3) |*| e123
+print(e2w3)
+
+let e3w1 = (e3 |^| e1) |*| e123
+print(e3w1)
+
+//[(1.0, [e(1), e(2), e(3)]),
+// (-1.0, [e(0), e(1), e(2)]),
+// (1.0, [e(0), e(1), e(3)]),
+// (-1.0, [e(0), e(2), e(3)])]
+
+  //[(1.0, [e(1), e(2), e(3)]),
+  // e(0)((-1.0, [e(1), e(2)]),
+  // (1.0, [e(1), e(3)]),
+  // (-1.0, [ e(2), e(3)]))]
+
