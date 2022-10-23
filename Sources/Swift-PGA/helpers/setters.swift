@@ -141,3 +141,19 @@ public func arrayfy<A:Numeric, B>(_ xs:[(A,B)]) -> [(A,[B])] {
 public func arrayfy<A:Numeric, B>(_ xs:(A,[B])) -> [(A,[B])] {
   [xs]
 }
+
+public func floatToDouble(_ x:Float) -> Double {
+  Double(x)
+}
+
+public func floatsToDoubles(_ xs:[Float]) -> [Double] {
+  xs.map(floatToDouble)
+}
+
+public func doubleToFloat(_ x:Double) -> Float {
+  Float(x)
+}
+
+public func doublesToFloats(_ xs:[Double]) -> [Float] {
+  xs.map(doubleToFloat)
+}

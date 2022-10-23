@@ -320,3 +320,5 @@ print(e3w1)
   // (1.0, [e(1), e(3)]),
   // (-1.0, [ e(2), e(3)]))]
 
+print(Rotor<Double>())
+print(Bivector<Double>())
